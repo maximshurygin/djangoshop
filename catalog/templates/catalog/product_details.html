@@ -1,0 +1,22 @@
+{% extends "catalog/base.html" %}
+{% load custom_tags %}
+
+{% block content %}
+    {% if product %}
+        <h1>{{ product.name }}</h1>
+
+        {% if product.image %}
+            <img src="{% mediapath product.image %}" alt="{{ product.name }}" style="max-width: 30%; height: auto;">
+        {% else %}
+            <p>Изображение отсутствует.</p>
+        {% endif %}
+
+        <p>Цена: {{ product.price }} руб.</p>
+        <p>Описание: {{ product.description }}</p>
+        <p>Категория: {{ product.category }}</p>
+        <p>Дата создания: {{ product.creation_date }}</p>
+        <p>Дата изменения: {{ product.change_date }}</p>
+    {% else %}
+        <p>Товар не найден.</p>
+    {% endif %}
+{% endblock %}
