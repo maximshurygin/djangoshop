@@ -13,10 +13,10 @@ class Command(BaseCommand):
         Product.objects.all().delete()
 
         product_data = [
-            {'name': 'RTX4070', 'category': Category.objects.get(id=4), 'price': 70000},
-            {'name': 'i9-12900F', 'category': Category.objects.get(id=5), 'price': 38000},
-            {'name': 'DEEPCOOL PQ850M', 'category': Category.objects.get(id=6), 'price': 12500},
-            {'name': 'GIGABYTE B550', 'category': Category.objects.get(id=7), 'price': 13500},
+            {'name': 'RTX4070', 'category': Category.objects.get(id=4), 'price': 70000, 'description': 'Производительная видеокарта'},
+            {'name': 'i9-12900F', 'category': Category.objects.get(id=5), 'price': 38000, 'description': 'Мощный процессор'},
+            {'name': 'DEEPCOOL PQ850M', 'category': Category.objects.get(id=6), 'price': 12500, 'description': 'Высокая энергоэффективность'},
+            {'name': 'GIGABYTE B550', 'category': Category.objects.get(id=7), 'price': 13500, 'description': 'Высокий уровень надежноси'},
         ]
 
         products_to_create = []
