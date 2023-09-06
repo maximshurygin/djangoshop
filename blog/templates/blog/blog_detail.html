@@ -1,0 +1,19 @@
+{% extends "catalog/base.html" %}
+{% load custom_tags %}
+
+{% block content %}
+    {% if object %}
+        <h1>{{ object.title }}</h1>
+        {% if object.image %}
+            <img src="{% mediapath object.image %}" alt="{{ object.title }}" style="max-width: 30%; height: auto;">
+        {% else %}
+            <p>Изображение отсутствует.</p>
+        {% endif %}
+
+        <p>Дата создания: {{ object.creation_date }}</p>
+        <p>Количество просмотров: {{ object.views_count }}</p>
+        <p>Содержание: {{ object.body }}</p>
+    {% else %}
+        <p>Блоговая запись не найдена.</p>
+    {% endif %}
+{% endblock %}

@@ -1,15 +1,14 @@
 from django.shortcuts import render
-
+from django.views.generic import ListView, DetailView
 from catalog.models import Product
 
 
-# Create your views here.
-def home(request):
-    products = Product.objects.all()
-    context = {
-        'products': products
-    }
-    return render(request, 'catalog/home.html', context)
+class ProductListView(ListView):
+    model = Product
+
+
+class ProductDetailView(DetailView):
+    model = Product
 
 
 def contacts(request):
@@ -19,13 +18,3 @@ def contacts(request):
         message = request.POST.get('message')
         print(f'{name} ({phone}): {message}')
     return render(request, 'catalog/contacts.html')
-
-
-def product_details(request, product_id):
-    try:
-        product = Product.objects.get(id=product_id)
-    except Product.DoesNotExist:
-        product = None
-
-    context = {'product': product}
-    return render(request, 'catalog/product_details.html', context)
