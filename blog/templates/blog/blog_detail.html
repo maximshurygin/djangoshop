@@ -5,7 +5,7 @@
     {% if object %}
         <h1>{{ object.title }}</h1>
         {% if object.image %}
-            <img src="{% mediapath object.image %}" alt="{{ object.title }}" style="max-width: 30%; height: auto;">
+            <img src="{% mediapath object.image.name %}" alt="{{ object.name }}" style="max-width: 30%; height: auto;">
         {% else %}
             <p>Изображение отсутствует.</p>
         {% endif %}

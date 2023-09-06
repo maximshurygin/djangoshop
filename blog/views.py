@@ -8,10 +8,10 @@ from blog.models import Blog
 
 class BlogCreateView(CreateView):
     model = Blog
-    fields = ('title', 'body',)
+    fields = ('title', 'body', 'image',)
     success_url = reverse_lazy('blog:list')
 
-    def from_valid(self, form):
+    def form_valid(self, form):
         if form.is_valid():
             new_blog = form.save()
             new_blog.slug = slugify(new_blog.title)
@@ -41,10 +41,9 @@ class BlogDetailView(DetailView):
 
 class BlogUpdateView(UpdateView):
     model = Blog
-    fields = ('title', 'body',)
-    # success_url = reverse_lazy('blog:list')
+    fields = ('title', 'body', 'image',)
 
-    def from_valid(self, form):
+    def form_valid(self, form):
         if form.is_valid():
             new_blog = form.save()
             new_blog.slug = slugify(new_blog.title)
@@ -71,4 +70,3 @@ def toggle_activity(request, pk):
     blog_item.save()
 
     return redirect(reverse('blog:list'))
-
