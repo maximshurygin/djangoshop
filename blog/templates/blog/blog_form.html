@@ -6,7 +6,6 @@
             <div class="col-6">
                 <div class="card">
                     <div class="card-body">
-                        <!-- Обратите внимание на добавленный enctype атрибут -->
                         <form method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             {{ form.as_p }}
