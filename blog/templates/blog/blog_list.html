@@ -1,7 +1,7 @@
 {% extends 'catalog/base.html' %}
 {% block content %}
     <div class="col-12 mb-5">
-        <a class="btn btn-outline-primary" href="{% url 'blog:create' %}">Добавить блоговую запись</a>
+        <a class="btn btn-primary" href="{% url 'blog:create' %}">Добавить блоговую запись</a>
     </div>
     {% for object in object_list %}
         <div class="col-md-4">

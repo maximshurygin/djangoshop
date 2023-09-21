@@ -1,0 +1,19 @@
+{% extends "catalog/base.html" %}
+{% load custom_tags %}
+
+{% block content %}
+    {% if version %}
+        <p>Имя версии: {{ version.version_name }}</p>
+        <p>Номер версии: {{ version.version_number }} руб.</p>
+        <p>Продукт: {{ version.product }}</p>
+        <p>Статус версии:
+            {% if version.is_current_version %}
+                Актуальная
+            {% else %}
+                Неактуальная
+            {% endif %}
+        </p>
+    {% else %}
+        <p>Версия не найдена.</p>
+    {% endif %}
+{% endblock %}

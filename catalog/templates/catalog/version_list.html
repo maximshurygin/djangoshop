@@ -1,0 +1,38 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="mb-3 text-right">
+            <a href="{% url 'version_create' %}" class="btn btn-primary">Создать версию</a>
+        </div>
+
+        {% if versions %}
+            <div class="row text-center">
+                {% for version in versions %}
+                    <div class="col-3">
+                        <div class="card mb-4 box-shadow">
+                            <div class="card-header">
+                                <h4 class="my-0 font-weight-normal">
+                                    <a href="{% url 'version_detail' pk=version.id %}">{{ version.product.name }}
+                                        - {{ version.version_number }}</a>
+                                </h4>
+                            </div>
+                            <div class="card-footer">
+                                <div class="btn-group">
+                                    <a href='{% url 'version_update' pk=version.id %}'
+                                       class="btn btn-warning">Редактировать</a>
+                                    <a href='{% url 'version_delete' pk=version.id %}'
+                                       class="btn btn-danger">Удалить</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="alert alert-warning" role="alert">
+                Версии не найдены.
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

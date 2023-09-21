@@ -2,6 +2,9 @@
 
 {% block content %}
     <div class="container">
+        <div class="mb-3 text-right">
+            <a href="{% url 'product_create' %}" class="btn btn-primary">Добавить товар</a>
+        </div>
         <div class="row text-center">
             {% for product in product_list %}
                 <div class="col-3">
@@ -14,6 +17,20 @@
                         <div class="card-body">
                             <h3 class="card-title pricing-card-title">{{ product.price }} руб.</h3>
                             <p>{{ product.description|truncatechars:100 }}</p>
+
+                            {% if product.get_current_version %}
+                                <p class="mt-3 text-muted">Активная
+                                    версия: {{ product.get_current_version.version_name }}
+                                    - {{ product.get_current_version.version_number }}</p>
+                            {% endif %}
+                        </div>
+                        <div class="card-footer">
+                            <div class="btn-group">
+                                <a href='{% url 'product_update' pk=product.id %}'
+                                   class="btn btn-warning">Редактировать</a>
+                                <a href='{% url 'product_delete' pk=product.id %}'
+                                   class="btn btn-danger">Удалить</a>
+                            </div>
                         </div>
                     </div>
                 </div>
