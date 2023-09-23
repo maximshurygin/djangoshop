@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 NULLABLE = {'blank': True, 'null': True}
@@ -17,6 +18,8 @@ class Category(models.Model):
 
 
 class Product(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='пользователь',
+                             related_name='products', **NULLABLE)
     name = models.CharField(max_length=100, verbose_name='наименование')
     description = models.TextField(verbose_name='описание', **NULLABLE)
     image = models.ImageField(upload_to='products/', verbose_name='изображение', **NULLABLE)

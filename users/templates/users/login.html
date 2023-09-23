@@ -11,12 +11,10 @@
                             {% csrf_token %}
                             {{ form|crispy }}
                             <button type="submit" class="btn btn-success">
-                                {% if object %}
-                                    Сохранить
-                                {% else %}
-                                    Создать
-                                {% endif %}
+                                Войти
                             </button>
+                            <a href="{% url 'users:generate_new_password' %}" class="btn btn-warning">Сбросить
+                                пароль</a>
                         </form>
                     </div>
                 </div>

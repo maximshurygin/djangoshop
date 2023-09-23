@@ -11,14 +11,16 @@
                             {% csrf_token %}
                             {{ form|crispy }}
                             <button type="submit" class="btn btn-success">
-                                {% if object %}
-                                    Сохранить
-                                {% else %}
-                                    Создать
-                                {% endif %}
+                                Сохранить
                             </button>
                         </form>
                     </div>
+                    {% if not user.is_verified %}
+                        {% if user.is_authenticated and not user.is_verified %}
+                            <a href="{% url 'users:send_verification_code' %}" class="btn btn-primary">Верифицировать
+                                почту</a>
+                        {% endif %}
+                    {% endif %}
                 </div>
             </div>
         </div>
